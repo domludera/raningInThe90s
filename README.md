@@ -7,5 +7,5 @@
                          /____/                                             
 ```
 
-# ranningInThe90s
+# raningInThe90s
 Yes, I want know. Yes, I want to see.
