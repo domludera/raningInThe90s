@@ -8,4 +8,4 @@
 ```
 
 # raningInThe90s
-Yes, I want know. Yes, I want to see.
+Yes, I want to know. Yes, I want to see.
