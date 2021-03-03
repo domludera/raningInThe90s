@@ -1,0 +1,21 @@
+INFO:root:Client object created
+INFO:root:Entered the context of a View object
+DEBUG:root:Passed View object to IRC Client
+DEBUG:root:IRC Client is subscribed to the View (to receive user input)
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:Character int: 106
+DEBUG:root:Character int: 106
+DEBUG:root:Character int: 107
+DEBUG:root:Character int: 106
+DEBUG:root:Character int: 107
+DEBUG:root:Character int: 106
+DEBUG:root:Character int: 106
+DEBUG:root:Character int: 106
+DEBUG:root:Character int: 106
+DEBUG:root:Character int: 27
+DEBUG:root:Character int: 27
+DEBUG:root:Character int: 27
+DEBUG:root:Character int: 27
+DEBUG:root:Signifies end of process
+DEBUG:root:Exiting context and closing View object
+DEBUG:root:Closing IRC Client object
