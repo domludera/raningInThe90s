@@ -57,7 +57,8 @@ class IRCClient(patterns.Subscriber):
         """
 
         socket = SocketClient(50011)
-        socket.run()
+        while socket:
+            self.add_msg(socket.run())
         # Remove this section in your code, simply for illustration purposes
         for x in range(10):
             self.add_msg(f"call after View.loop: {x}")
