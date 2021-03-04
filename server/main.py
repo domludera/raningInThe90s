@@ -1,6 +1,6 @@
 #!/bin/python3
-from pingingserver import PingServer
+from chatserver import ChatServer
 
-server = PingServer()
+server = ChatServer()
 server.run()
 

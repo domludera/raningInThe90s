@@ -5,13 +5,14 @@ import select
 import errno
 import queue
 
-class PingServer:
+class ChatServer:
 
     def __init__(self):
 
         HOST = 'localhost'
         PORT = 50011
         self._s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self._s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self._s.bind((HOST, PORT))
         self._s.setblocking(0)
         self.recv_bytes = 2048
@@ -34,6 +35,7 @@ class PingServer:
             for sock in read:
                 if sock is self._s:
                     client, addr = self._s.accept()
+                    print(client, addr)
                     client.setblocking(0)
                     readers.append(client)
                     queues[client] = queue.Queue()
@@ -41,6 +43,7 @@ class PingServer:
                 else:
                     try:
                         self.data = sock.recv(self.recv_bytes)
+                        print(self.data)
                         self.sender = sock
                     except socket.error as e:
                         if e.errno ==errno.ECONNRESET:

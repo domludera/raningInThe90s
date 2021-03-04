@@ -15,6 +15,7 @@ import logging
 
 import patterns
 import view
+from socket_client import SocketClient
 
 logging.basicConfig(filename='view.log', level=logging.DEBUG)
 logger = logging.getLogger()
@@ -54,6 +55,9 @@ class IRCClient(patterns.Subscriber):
         """
         Driver of your IRC Client
         """
+
+        socket = SocketClient(50011)
+        socket.run()
         # Remove this section in your code, simply for illustration purposes
         for x in range(10):
             self.add_msg(f"call after View.loop: {x}")
