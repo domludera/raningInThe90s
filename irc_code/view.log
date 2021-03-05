@@ -3,280 +3,107 @@ INFO:root:Entered the context of a View object
 DEBUG:root:Passed View object to IRC Client
 DEBUG:root:IRC Client is subscribed to the View (to receive user input)
 DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 106
-DEBUG:root:Character int: 106
-DEBUG:root:Character int: 107
-DEBUG:root:Character int: 106
-DEBUG:root:Character int: 107
-DEBUG:root:Character int: 106
-DEBUG:root:Character int: 106
-DEBUG:root:Character int: 106
-DEBUG:root:Character int: 106
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 27
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: 
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: 
-DEBUG:root:Character int: 410
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: 
 DEBUG:root:Character int: 102
 DEBUG:root:Character int: 115
 DEBUG:root:Character int: 97
 DEBUG:root:Character int: 100
 DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: fsadf
-INFO:root:IRCClient.update -> msg: fsadf
-DEBUG:root:Character int: 97
 DEBUG:root:Character int: 115
-DEBUG:root:Character int: 102
+DEBUG:root:Character int: 106
+DEBUG:root:Character int: 107
+DEBUG:root:Character int: 97
 DEBUG:root:Character int: 100
 DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: asfdf
-INFO:root:IRCClient.update -> msg: asfdf
 DEBUG:root:Character int: 104
-DEBUG:root:Character int: 101
 DEBUG:root:Character int: 108
-DEBUG:root:Character int: 108
-DEBUG:root:Character int: 111
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: hello
-INFO:root:IRCClient.update -> msg: hello
-DEBUG:root:Character int: 22
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: asdf
-INFO:root:IRCClient.update -> msg: asdf
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: fsdaf
-INFO:root:IRCClient.update -> msg: fsdaf
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
 DEBUG:root:Character int: 115
 DEBUG:root:Character int: 97
 DEBUG:root:Character int: 100
 DEBUG:root:Character int: 102
 DEBUG:root:Character int: 10
-DEBUG:root:Input line: asdfsadf
-INFO:root:IRCClient.update -> msg: asdfsadf
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 100
+DEBUG:root:Input line: fsadfsjkadfhlsadf
+INFO:root:IRCClient.update -> msg: fsadfsjkadfhlsadf
 DEBUG:root:Character int: 115
 DEBUG:root:Character int: 97
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: dsa
-INFO:root:IRCClient.update -> msg: dsa
 DEBUG:root:Character int: 100
-DEBUG:root:Character int: 97
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: sadf
+INFO:root:IRCClient.update -> msg: sadf
 DEBUG:root:Character int: 115
 DEBUG:root:Character int: 100
 DEBUG:root:Character int: 10
-DEBUG:root:Input line: dasd
-INFO:root:IRCClient.update -> msg: dasd
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:Input line: sd
+INFO:root:IRCClient.update -> msg: sd
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: 
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: sf
+INFO:root:IRCClient.update -> msg: sf
+DEBUG:root:Character int: 97
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: asf
+INFO:root:IRCClient.update -> msg: asf
+DEBUG:root:Character int: 27
+DEBUG:root:Character int: 58
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 97
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 100
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 97
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 100
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: fasdfasdf
+INFO:root:IRCClient.update -> msg: fasdfasdf
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 100
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: sdf
+INFO:root:IRCClient.update -> msg: sdf
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 100
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: sd
+INFO:root:IRCClient.update -> msg: sd
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 97
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 100
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: fasd
+INFO:root:IRCClient.update -> msg: fasd
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: f
+INFO:root:IRCClient.update -> msg: f
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 100
+DEBUG:root:Character int: 102
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: sdf
+INFO:root:IRCClient.update -> msg: sdf
+DEBUG:root:Character int: 115
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 27
+DEBUG:root:Character int: 58
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 47
 DEBUG:root:Character int: 27
 DEBUG:root:Character int: 91
 DEBUG:root:Character int: 65
@@ -284,359 +111,26 @@ DEBUG:root:Character int: 127
 DEBUG:root:Character int: 127
 DEBUG:root:Character int: 127
 DEBUG:root:Character int: 127
+DEBUG:root:Character int: 113
+DEBUG:root:Character int: 117
+DEBUG:root:Character int: 105
+DEBUG:root:Character int: 116
+DEBUG:root:Character int: 10
+DEBUG:root:Input line: quit
+INFO:root:IRCClient.update -> msg: quit
+DEBUG:root:Character int: 47
+DEBUG:root:Character int: 113
+DEBUG:root:Character int: 105
+DEBUG:root:Character int: 117
 DEBUG:root:Character int: 127
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
+DEBUG:root:Character int: 127
+DEBUG:root:Character int: 117
+DEBUG:root:Character int: 105
+DEBUG:root:Character int: 116
 DEBUG:root:Character int: 10
-DEBUG:root:Input line: dasdsadasdasd
-INFO:root:IRCClient.update -> msg: dasdsadasdasd
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: sad
-INFO:root:IRCClient.update -> msg: sad
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: asd
-INFO:root:IRCClient.update -> msg: asd
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: dasd
-INFO:root:IRCClient.update -> msg: dasd
-DEBUG:root:Character int: 410
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-DEBUG:root:Character int: 410
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: 
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: 
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: 
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: asdf
-INFO:root:IRCClient.update -> msg: asdf
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: asdf
-INFO:root:IRCClient.update -> msg: asdf
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: 
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: asdf
-INFO:root:IRCClient.update -> msg: asdf
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: as
-INFO:root:IRCClient.update -> msg: as
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 27
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-DEBUG:root:Character int: 27
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 410
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 410
-DEBUG:root:Character int: 410
-DEBUG:root:Character int: 410
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Character int: 27
-DEBUG:root:Character int: 91
-DEBUG:root:Character int: 66
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-DEBUG:root:Character int: 410
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: fdsafdsaf
-INFO:root:IRCClient.update -> msg: fdsafdsaf
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: asdfsdaf
-INFO:root:IRCClient.update -> msg: asdfsdaf
-DEBUG:root:Character int: 240
-DEBUG:root:Character int: 159
-DEBUG:root:Character int: 152
-DEBUG:root:Character int: 130
-DEBUG:root:Character int: 410
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: sadfsadf
-INFO:root:IRCClient.update -> msg: sadfsadf
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: fasdf
-INFO:root:IRCClient.update -> msg: fasdf
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: dsaf
-INFO:root:IRCClient.update -> msg: dsaf
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Character int: 10
-DEBUG:root:Input line: asdf
-INFO:root:IRCClient.update -> msg: asdf
-DEBUG:root:Character int: 97
-DEBUG:root:Character int: 115
-DEBUG:root:Character int: 100
-DEBUG:root:Character int: 102
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
-INFO:root:Client object created
-INFO:root:Entered the context of a View object
-DEBUG:root:Passed View object to IRC Client
-DEBUG:root:IRC Client is subscribed to the View (to receive user input)
-DEBUG:asyncio:Using selector: EpollSelector
-DEBUG:root:Signifies end of process
-DEBUG:root:Exiting context and closing View object
-DEBUG:root:Closing IRC Client object
+DEBUG:root:Input line: /quit
+INFO:root:IRCClient.update -> msg: /quit
+DEBUG:root:KeyboardInterrupt detected within the view
 DEBUG:root:Signifies end of process
 DEBUG:root:Exiting context and closing View object
 DEBUG:root:Closing IRC Client object

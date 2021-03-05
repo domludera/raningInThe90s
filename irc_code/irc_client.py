@@ -27,12 +27,13 @@ class IRCClient(patterns.Subscriber):
         super().__init__()
         self.username = str()
         self._run = True
+        self._s = SocketClient(50011)
 
     def set_view(self, view):
         self.view = view
 
     def update(self, msg):
-        # Will need to modify this
+        # TODO Will need to modify this
         if not isinstance(msg, str):
             raise TypeError(f"Update argument needs to be a string")
         elif not len(msg):
@@ -42,8 +43,9 @@ class IRCClient(patterns.Subscriber):
         self.process_input(msg)
 
     def process_input(self, msg):
-        # Will need to modify this
+        # TODO Will need to modify this
         self.add_msg(msg)
+
         if msg.lower().startswith('/quit'):
             # Command that leads to the closure of the process
             raise KeyboardInterrupt
@@ -55,14 +57,13 @@ class IRCClient(patterns.Subscriber):
         """
         Driver of your IRC Client
         """
+        self._s.run()
+        self.add_msg("Connected to server")
 
-        socket = SocketClient(50011)
-        while socket:
-            self.add_msg(socket.run())
         # Remove this section in your code, simply for illustration purposes
-        for x in range(10):
-            self.add_msg(f"call after View.loop: {x}")
-            await asyncio.sleep(2)
+        #for x in range(10):
+        #    self.add_msg(f"call after View.loop: {x}")
+        #    await asyncio.sleep(2)
 
     def close(self):
         # Terminate connection

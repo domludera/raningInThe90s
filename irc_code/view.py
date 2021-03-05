@@ -62,7 +62,7 @@ class View(patterns.Publisher):
         self.title_win_dim = (1, self.width)
         self.title_win = curses.newwin(*self.title_win_dim, *self.title_win_begin)
         if self.title is None:
-            title = "COMP445 - IRC Client"
+            title = "raningInThe90s - IRC Client"
         self.title = title.center(self.width-2)
         self.title_win.bkgd(curses.color_pair(2) | curses.A_BOLD)
         self.title_win.addstr(self.title)
@@ -150,7 +150,7 @@ class View(patterns.Publisher):
 
     async def run(self):
         """
-        Loops and watches input_win 
+        Loops and watches input_win
         for user input and
         messages to write to msg_win
         """

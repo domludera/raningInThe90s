@@ -7,7 +7,5 @@ class SocketClient:
         self._s.connect(('localhost', port))
 
     def run(self):
-        self._s.sendall(bytes(input(), 'utf-8'))
-        data = self._s.recv(1024)
-        return data
-
+        msg = "hello world!"
+        self._s.sendall(bytes(msg, 'utf-8'))
