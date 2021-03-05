@@ -9,18 +9,18 @@ class ChatServer:
 
     def __init__(self):
 
-        HOST = 'localhost'
-        PORT = 50011
+        self.HOST = 'localhost'
+        self.PORT = 50011
         self._s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self._s.bind((HOST, PORT))
-        self._s.setblocking(0)
-        self.recv_bytes = 2048
-        self.data = ''
-        self.sender = None
+        self._s.bind((self.HOST, self.PORT))
+        self._s.setblocking(0) # bonus
+        self.recv_bytes = 1024
+        self.data = '' # current data to be broadcasted
+        self.sender = None # who is the sender of the above data
 
     def run(self):
-        print('Server started')
+        print('Server started on', self.HOST, self.PORT)
         self._s.listen()
         readers = [self._s]
         writers = []
@@ -43,7 +43,7 @@ class ChatServer:
                 else:
                     try:
                         self.data = sock.recv(self.recv_bytes)
-                        print(self.data)
+                        print(self.data) # debugging
                         self.sender = sock
                     except socket.error as e:
                         if e.errno ==errno.ECONNRESET:
@@ -62,17 +62,15 @@ class ChatServer:
                         sock.close()
             for sock in write:
                 if self.data:
-                    if self.sender is not sock:
+                    if self.sender is not sock: # MAYBE REMOVE
                         try:
                             sock.send(self.data)
                         except socket.error as e:
                             if sock in writers:
                                 writers.remove(sock)
-
             for sock in err:
                 readers.remove(sock)
                 if sock in writers:
                     writers.remove(sock)
-
                 sock.close()
             self.data = ''
