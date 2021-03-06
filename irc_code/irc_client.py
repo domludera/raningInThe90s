@@ -15,6 +15,9 @@ import logging
 
 import patterns
 import view
+
+import sys, getopt
+
 from socket_client import SocketClient
 
 logging.basicConfig(filename='view.log', level=logging.DEBUG)
@@ -23,11 +26,11 @@ logger = logging.getLogger()
 
 class IRCClient(patterns.Subscriber):
 
-    def __init__(self):
+    def __init__(self, HOST, PORT):
         super().__init__()
         self.username = str()
         self._run = True
-        self._s = SocketClient(50011)
+        self._s = SocketClient(HOST, PORT)
 
     def set_view(self, view):
         self.view = view
@@ -70,11 +73,29 @@ class IRCClient(patterns.Subscriber):
         logger.debug(f"Closing IRC Client object")
         pass
 
+def getHelpMenu():
+    menu = """usage: irc_client.py [-h] [--server SERVER] [--port PORT]
+
+optional arguments:
+    -h, --help         Show this help message and exit
+    --server SERVER    Target server to initiate a connection to
+    --port PORT        Target port to use
+        """
+    return menu
 
 
 def main(args):
     # Pass your arguments where necessary
-    client = IRCClient()
+    try:
+        opts, args = getopt.getopt(args, "hs:p:",["help", "server=", "port="])
+    except getopt.GetoptError:
+        print(getHelpMenu())
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h' or opt == '--help':
+            print(getHelpMenu())
+            sys.exit()
+    client = IRCClient(HOST, PORT)
     logger.info(f"Client object created")
     with view.View() as v:
         logger.info(f"Entered the context of a View object")
@@ -97,4 +118,4 @@ def main(args):
 if __name__ == "__main__":
     # Parse your command line arguments here
     args = None
-    main(args)
+    main(sys.argv[1:])

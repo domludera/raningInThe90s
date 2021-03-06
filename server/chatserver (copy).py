@@ -19,8 +19,8 @@ class ChatServer:
         self._s.bind((self.HOST, self.PORT))
         self._s.setblocking(0) # bonus
         self.recv_bytes = 1024
-        # self.data = '' # current data to be broadcasted
-        # self.sender = None # who is the sender of the above data
+        self.data = '' # current data to be broadcasted
+        self.sender = None # who is the sender of the above data
         self.ircusers = dict()
         self.readers = []
         self.writers = []
@@ -56,7 +56,6 @@ class ChatServer:
 
 
     def handleReader(self, read, data):
-        print(read)
         for sock in read:
             if sock is self._s:
                 self.acceptNewConnection()

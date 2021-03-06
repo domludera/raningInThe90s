@@ -2,9 +2,9 @@ import socket
 
 class SocketClient:
 
-    def __init__(self, port):
+    def __init__(self, HOST, PORT):
         self._s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self._s.connect(('localhost', port))
+        self._s.connect((HOST, PORT))
 
     def run(self):
         msg = "hello world!"

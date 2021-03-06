@@ -37,7 +37,7 @@ class View(patterns.Publisher):
         # Colors
         curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)
         curses.init_pair(2, curses.COLOR_BLACK, curses.COLOR_WHITE )
-        curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_GREEN )
+        curses.init_pair(3, curses.COLOR_GREEN, curses.COLOR_BLACK)
         self.stdscr.bkgd(curses.color_pair(1))
         self.stdscr.refresh()
         # Check minimum size for terminal
@@ -72,7 +72,7 @@ class View(patterns.Publisher):
         self.msg_win_begin = (1,0)
         self.msg_win_dim = (self.height - 2, self.width)
         self.msg_win = curses.newwin(*self.msg_win_dim, *self.msg_win_begin)
-        self.msg_win.bkgd(curses.color_pair(1)|curses.A_ITALIC)
+        self.msg_win.bkgd(curses.color_pair(3)|curses.A_ITALIC)
         self.msg_win.scrollok(True)
         self.msg_win.refresh()
         self._welcome_banner()

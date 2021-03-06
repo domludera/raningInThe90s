@@ -1,0 +1,4 @@
+venv/
+chat/
+.vim/
+server/__pycache__
