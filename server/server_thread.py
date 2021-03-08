@@ -15,12 +15,13 @@ class ServerThread(threading.Thread):
         threading.Thread.__init__(self)
         pass
 
-    def setup(self, __client, __address):
+    def setup(self, __client, __address, server_instance):
         self.ircuser = IRCUser()
         self.authenticated = False
         self.joinedChannel = False
         self.client = __client
         self.address = __address
+        self.server_instance = server_instance
 
     def isAuthenticated(self):
         return self.authenticated
@@ -35,39 +36,38 @@ class ServerThread(threading.Thread):
             try:
                 if not self.authenticated:
                     self.authenticate()
-                if not self.joinedChannel:
+
+                elif not self.joinedChannel:
                     self.joinChannel()
+
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     print('IO Error', self.client)
                     b = False
-            # else:
-            #     print("Error:", self.address)
-            #     self.client.close()
 
     def authenticate(self):
-        self.client.sendall(b'Enter username: \n')
+        self.client.recv(1024)
+        self.client.send(b'Enter username:')
         data = self.client.recv(1024)
-        print(data)
         self.ircuser.setUsername(str(data, 'utf-8').strip())
-        self.client.sendall(b'Enter nickname: \n')
+        self.client.send(b'Enter nickname:')
         data = self.client.recv(1024)
-        print(data)
         self.ircuser.setNickname(str(data, 'utf-8').strip())
         self.authenticated = self.ircuser.isAuthenticated()
         if self.authenticated:
-            resp = 'Welcome ' + self.ircuser.getNickname() + '! -- User authenticated\n'
-            self.client.sendall(bytes(resp, 'utf-8'))
+            resp = 'Welcome ' + self.ircuser.getNickname() + '! -- User authenticated'
+            self.client.send(bytes(resp, 'utf-8'))
         else:
-            self.client.sendall(b'User authentication failed!\n')
+            self.client.send(b'User authentication failed!')
 
     def joinChannel(self):
-        self.client.sendall(b'Enter channel to join: ')
+        self.client.recv(1024)
+        self.client.send(b'Enter channel to join: ')
         data = self.client.recv(1024)
         self.ircuser.joinChannel(str(data, 'utf-8').strip())
         self.joinedChannel = self.ircuser.joinedChannel()
         if self.joinedChannel:
-            resp = 'Joined channel ' + self.ircuser.getChannel() + '\n'
-            self.client.sendall(bytes(resp, 'utf-8'))
+            resp = 'Joined channel ' + self.ircuser.getChannel()
+            self.client.send(bytes(resp, 'utf-8'))
         else:
-            self.client.sendall(b'Failed to join channel!\n')
+            self.client.send(b'Failed to join channel!')

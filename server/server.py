@@ -31,13 +31,14 @@ class Server(object):
                     if s == self.server:
                         sock, address = self.server.accept();
                         serverThread = ServerThread()
-                        serverThread.setup(sock, address)
+                        serverThread.setup(sock, address, self)
                         serverThread.start()
                         clients[serverThread.client] = serverThread
                         outputs.append(serverThread.client)
                     else:
                         try:
                             data = s.recv(1024)
+                            print(data)
                         except socket.error as e:
                             if e.errno == errno.ECONNRESET:
                                 data = None

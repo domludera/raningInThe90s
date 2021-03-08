@@ -8,7 +8,7 @@ import threading
 import patterns
 
 
-class SocketClient(threading.Thread, patterns.Subscriber):
+class SocketClient(threading.Thread, patterns.Publisher):
 
     def __init__(self, HOST, PORT):
         super().__init__(daemon=True)
@@ -19,16 +19,22 @@ class SocketClient(threading.Thread, patterns.Subscriber):
         self.msg = b''
         self.inputs = [self.s]
         self.outputs = []
+        self.irc = None
+
+    def set_irc(self, irc):
+        self.irc = irc
+
+    def update(self, msg):
+        self.irc.update(msg)
 
     def handleRead(self, read):
         for s in read:
             try:
                 data = self.s.recv(1024)
                 if data:
+                    if self.irc:
+                        self.update(str(data, 'utf-8'))
                     self.outputs.append(s)
-                    # print(str(data, 'utf-8'))
-                    if 'Joined channel' in str(data, 'utf-8').strip():
-                        time.sleep(10000)
             except socket.error as e:
                 if e.errno == errno.ECONNRESET:
                     data = None
@@ -42,21 +48,15 @@ class SocketClient(threading.Thread, patterns.Subscriber):
                 self.outputs.remove(s)
         self.msg = b''
 
-    # TODO DELETE
     def run(self):
-
+        self.s.send(b'\n')
         while 1:
             read, write, err = self.getReadySockets()
-
             self.handleRead(read)
             self.handleWrite(write)
 
     def getReadySockets(self):
         return select.select(self.inputs, self.outputs, self.inputs)
-
-
-
-
 
     def setMsg(self, msg):
         self.msg = bytes(msg, 'utf-8')

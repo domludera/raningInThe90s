@@ -18,7 +18,6 @@ import patterns
 import view
 
 import sys, getopt
-from concurrent.futures import Future, ThreadPoolExecutor
 
 from socket_client import SocketClient
 
@@ -33,6 +32,8 @@ class IRCClient(patterns.Subscriber):
         self.username = str()
         self._run = True
         self._s = SocketClient(HOST, PORT)
+        self._s.set_irc(self)
+        # self.toPrint = ''
 
     def set_view(self, view):
         self.view = view
@@ -45,6 +46,9 @@ class IRCClient(patterns.Subscriber):
             # Empty string
             return
         logger.info(f"IRCClient.update -> msg: {msg}")
+        # if self.toPrint:
+        #     self.add_msg(self.toPrint)
+        #     self.toPrint = ''
         self.process_input(msg)
 
     def process_input(self, msg):
@@ -63,7 +67,6 @@ class IRCClient(patterns.Subscriber):
         """
         Driver of your IRC Client
         """
-        self.add_msg('Welcome!')
         self._s.start()
 
     def close(self):
