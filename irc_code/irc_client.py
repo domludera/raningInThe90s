@@ -11,12 +11,14 @@ Description:
 
 """
 import asyncio
+import concurrent
 import logging
 
 import patterns
 import view
 
 import sys, getopt
+from concurrent.futures import Future, ThreadPoolExecutor
 
 from socket_client import SocketClient
 
@@ -48,6 +50,7 @@ class IRCClient(patterns.Subscriber):
     def process_input(self, msg):
         # TODO Will need to modify this
         self.add_msg(msg)
+        self._s.setMsg(msg)
 
         if msg.lower().startswith('/quit'):
             # Command that leads to the closure of the process
@@ -60,20 +63,16 @@ class IRCClient(patterns.Subscriber):
         """
         Driver of your IRC Client
         """
-        self._s.run()
-        self.add_msg("Connected to server")
-
-        # Remove this section in your code, simply for illustration purposes
-        #for x in range(10):
-        #    self.add_msg(f"call after View.loop: {x}")
-        #    await asyncio.sleep(2)
+        self.add_msg('Welcome!')
+        self._s.start()
 
     def close(self):
         # Terminate connection
         logger.debug(f"Closing IRC Client object")
         pass
 
-def getHelpMenu():
+
+def get_help_menu():
     menu = """usage: irc_client.py [-h] [--server SERVER] [--port PORT]
 
 optional arguments:
@@ -84,18 +83,28 @@ optional arguments:
     return menu
 
 
-def main(args):
-    # Pass your arguments where necessary
+def init_client(cmdargs):
+    HOST = ''
+    PORT = 0
     try:
-        opts, args = getopt.getopt(args, "hs:p:",["help", "server=", "port="])
+        opts, arguments = getopt.getopt(cmdargs, "hs:p:", ["help", "server=", "port="])
     except getopt.GetoptError:
-        print(getHelpMenu())
+        print(get_help_menu())
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h' or opt == '--help':
-            print(getHelpMenu())
+            print(get_help_menu())
             sys.exit()
-    client = IRCClient(HOST, PORT)
+        if opt == '--server':
+            HOST = arg
+        if opt == '--port':
+            PORT = arg
+    return IRCClient(HOST, int(PORT))
+
+
+def main(args):
+    # Pass your arguments where necessary
+    client = init_client(args)
     logger.info(f"Client object created")
     with view.View() as v:
         logger.info(f"Entered the context of a View object")
@@ -103,6 +112,7 @@ def main(args):
         logger.debug(f"Passed View object to IRC Client")
         v.add_subscriber(client)
         logger.debug(f"IRC Client is subscribed to the View (to receive user input)")
+
         async def inner_run():
             await asyncio.gather(
                 v.run(),
@@ -110,10 +120,11 @@ def main(args):
                 return_exceptions=True,
             )
         try:
-            asyncio.run( inner_run() )
+            asyncio.run(inner_run())
         except KeyboardInterrupt as e:
             logger.debug(f"Signifies end of process")
     client.close()
+
 
 if __name__ == "__main__":
     # Parse your command line arguments here

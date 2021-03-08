@@ -21,6 +21,12 @@ class IRCUser:
         else:
             return False
 
+    def joinedChannel(self):
+        if self.channel:
+            return True
+        else:
+            return False
+
     def getUsername(self):
         return self.username
 
