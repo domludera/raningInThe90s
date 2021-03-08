@@ -54,6 +54,7 @@ class Server(object):
                 inready, outready, excready = select.select(inputs, outputs, inputs)
 
                 for s in inready:
+
                     if s == self.server:
                         sock, address = self.server.accept();
                         serverThread = ServerThread()
@@ -64,12 +65,14 @@ class Server(object):
                     else:
                         try:
                             data = s.recv(1024)
-                            self.logger.debug('Received data: %s', data.decode('utf-8'))
+                            loudMouth = clients[s]
+                            self.logger.debug('Received data: %s, from: %s', data.decode('utf-8'), loudMouth.ircuser.getNickname())
                         except socket.error as e:
                             if e.errno == errno.ECONNRESET:
                                 data = None
                             else:
                                 raise e
+
                         if data:
                             self.sender = s
                             self.msg = data
@@ -78,8 +81,8 @@ class Server(object):
                                     if clients[c].joinedChannel:
                                         c.sendall(data)
                         else:
-                            #nicholas = serverThread.ircuser.getNickname()
-                            self.logger.debug('%s has disconnected', s) # nicholas?
+                            loudMouth = clients[s].ircuser.getNickname()
+                            self.logger.debug('%s has disconnected', loudMouth)
                             # inputs.remove(s)
                             outputs.remove(s)
                             del clients[s]
