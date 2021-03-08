@@ -3,6 +3,8 @@ import socket
 
 import sys, errno
 
+import re
+
 from irc_user import IRCUser
 
 
@@ -31,14 +33,26 @@ class ServerThread(threading.Thread):
 
     def run(self):
         b = True
+        self.client.send(b'Please authenticate using IRC commands')
         while b:
             # print(self.client)
             try:
                 if not self.authenticated:
-                    self.authenticate()
-
-                elif not self.joinedChannel:
-                    self.joinChannel()
+                    # self.authenticate()
+                    data = self.client.recv(1024)
+                    re_user = re.compile('USER\W(\S+)')
+                    m = re_user.match(str(data, 'utf-8'))
+                    if m:
+                        self.ircuser.setUsername(m.group(1))
+                        resp = 'Username set to ' + self.ircuser.getUsername()
+                        self.client.send(bytes(resp, 'utf-8'))
+                    re_nick = re.compile('NICK\W(\S+)')
+                    m = re_nick.match(str(data, 'utf-8'))
+                    if m:
+                        self.ircuser.setNickname(m.group(1))
+                        resp = 'Nickname set to ' + self.ircuser.getNickname()
+                        self.client.send(bytes(resp, 'utf-8'))
+                        self.authenticate()
 
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -46,18 +60,16 @@ class ServerThread(threading.Thread):
                     b = False
 
     def authenticate(self):
-        self.client.send(b'Enter username:')
-        data = self.client.recv(1024)
-        self.ircuser.setUsername(str(data, 'utf-8').strip())
-        self.client.send(b'Enter nickname:')
-        data = self.client.recv(1024)
-        self.ircuser.setNickname(str(data, 'utf-8').strip())
+        # self.client.send(b'Enter username:')
+        # data = self.client.recv(1024)
+        # self.ircuser.setUsername(str(data, 'utf-8').strip())
+        # self.client.send(b'Enter nickname:')
+        # data = self.client.recv(1024)
+        # self.ircuser.setNickname(str(data, 'utf-8').strip())
         self.authenticated = self.ircuser.isAuthenticated()
-        if self.authenticated:
-            resp = 'Welcome ' + self.ircuser.getNickname() + '! -- User authenticated'
-            self.client.send(bytes(resp, 'utf-8'))
-        else:
-            self.client.send(b'User authentication failed!')
+        resp = 'Welcome ' + self.ircuser.getNickname() + '! -- User authenticated '
+        self.client.send(bytes(resp, 'utf-8'))
+        self.joinChannel()
 
     def joinChannel(self):
         self.ircuser.joinChannel('#global')

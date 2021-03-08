@@ -17,6 +17,7 @@ class SocketClient(threading.Thread, patterns.Publisher):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect((self.HOST, self.PORT))
         self.msg = b''
+        self.sender = None
         self.inputs = [self.s]
         self.outputs = []
         self.irc = None
@@ -52,7 +53,7 @@ class SocketClient(threading.Thread, patterns.Publisher):
                 self.s.send(self.msg)
                 if self.irc:
                     if not self.irc.username:
-                        self.username = str(self.msg, 'utf-8')
+                        self.username = str(self.msg, 'utf-8').split(' ')[1]
                         self.set_irc_username(self.username)
                 self.outputs.remove(s)
         self.msg = b''
@@ -67,6 +68,7 @@ class SocketClient(threading.Thread, patterns.Publisher):
         return select.select(self.inputs, self.outputs, self.inputs)
 
     def setMsg(self, msg):
+        self.sender = self.s
         self.msg = bytes(msg, 'utf-8')
 
 
