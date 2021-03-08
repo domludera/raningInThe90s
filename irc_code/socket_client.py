@@ -6,6 +6,7 @@ import time
 import asyncio
 import threading
 import patterns
+import re
 
 
 class SocketClient(threading.Thread, patterns.Publisher):
@@ -29,7 +30,7 @@ class SocketClient(threading.Thread, patterns.Publisher):
         self.irc.username = username
 
     def update(self, msg):
-        self.irc.view.add_msg(self.username, msg)
+        self.irc.add_msg(msg)
 
     def handleRead(self, read):
         for s in read:
@@ -37,7 +38,13 @@ class SocketClient(threading.Thread, patterns.Publisher):
                 data = self.s.recv(1024)
                 if data:
                     if self.irc:
-                        self.update(str(data, 'utf-8'))
+                        re_user = re.compile('(\S+)~([\S+\s?].*)')
+                        msg = str(data, 'utf-8')
+                        m = re_user.match(msg)
+                        if m:
+                            self.irc.username = m.group(1)
+                            msg = m.group(2)
+                        self.update(msg)
                     if s not in self.outputs:
                         self.outputs.append(s)
             except socket.error as e:
@@ -50,10 +57,9 @@ class SocketClient(threading.Thread, patterns.Publisher):
         for s in write:
             if self.msg:
                 self.s.send(self.msg)
-                if self.irc:
-                    if not self.irc.username:
-                        self.username = str(self.msg, 'utf-8')
-                        self.set_irc_username(self.username)
+                    # if not self.irc.username:
+                    #     self.username = str(self.msg, 'utf-8')
+                    #     self.set_irc_username(self.username)
                 self.outputs.remove(s)
         self.msg = b''
 
