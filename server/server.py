@@ -22,6 +22,7 @@ class Server(object):
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server.bind((SERVER, PORT))
+        self.sender = None
 
         # logger setup
         logging.basicConfig(
@@ -70,9 +71,12 @@ class Server(object):
                             else:
                                 raise e
                         if data:
+                            self.sender = s
+                            self.msg = data
                             for c in outready:
-                                if clients[c].joinedChannel:
-                                    c.sendall(data)
+                                if c is not self.sender:
+                                    if clients[c].joinedChannel:
+                                        c.sendall(data)
                         else:
                             #nicholas = serverThread.ircuser.getNickname()
                             self.logger.debug('%s has disconnected', s) # nicholas?
