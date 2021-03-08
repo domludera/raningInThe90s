@@ -59,11 +59,11 @@ class SocketClient(threading.Thread, patterns.Publisher):
 
     def run(self):
         while 1:
-            read, write, err = self.getReadySockets()
+            read, write, err = self.get_ready_sockets()
             self.handleRead(read)
             self.handleWrite(write)
 
-    def getReadySockets(self):
+    def get_ready_sockets(self):
         return select.select(self.inputs, self.outputs, self.inputs)
 
     def setMsg(self, msg):
