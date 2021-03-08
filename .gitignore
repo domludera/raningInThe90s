@@ -2,3 +2,4 @@ venv/
 chat/
 .vim/
 server/__pycache__
+debug.log

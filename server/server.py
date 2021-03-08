@@ -1,9 +1,11 @@
 import errno
 import select
 import socket
+import logging
+
+
 
 from server_thread import ServerThread
-
 
 class Server(object):
     '''
@@ -14,16 +16,39 @@ class Server(object):
         '''
         Constructor
         '''
+        SERVER = 'localhost'
+        PORT = 50012
+
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.server.bind(('localhost', 50012))
+        self.server.bind((SERVER, PORT))
+
+        # logger setup
+        logging.basicConfig(
+            format='%(asctime)s %(levelname)-8s %(message)s',
+            level=logging.INFO,
+            datefmt='%Y-%m-%d %H:%M:%S',
+            filename=('debug.log'))
+
+        self.logger = logging.getLogger()
+        self.handler = logging.StreamHandler()
+        self.formatter = logging.Formatter(
+                '%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+        self.handler.setFormatter(self.formatter)
+        self.logger.addHandler(self.handler)
+        self.logger.setLevel(logging.DEBUG)
+
+        self.logger.debug('Logger initialized for server "%s" at port %s', SERVER, PORT)
 
     def run(self):
+        self.logger.debug('Server running, listening for inbound connections')
         self.server.listen()
+        
         inputs = [self.server]
         outputs = []
         clients = dict()
-        while 1:
+
+        while True:
 
                 inready, outready, excready = select.select(inputs, outputs, inputs)
 
@@ -38,7 +63,7 @@ class Server(object):
                     else:
                         try:
                             data = s.recv(1024)
-                            print(data)
+                            self.logger.debug('Received data: %s', data.decode('utf-8'))
                         except socket.error as e:
                             if e.errno == errno.ECONNRESET:
                                 data = None
@@ -49,11 +74,13 @@ class Server(object):
                                 if clients[c].joinedChannel:
                                     c.sendall(data)
                         else:
-                            print(s, 'has disconnected')
+                            #nicholas = serverThread.ircuser.getNickname()
+                            self.logger.debug('%s has disconnected', s) # nicholas?
                             # inputs.remove(s)
                             outputs.remove(s)
                             del clients[s]
                             s.close()
+
                 for c in outready:
                     try:
                         if int(c.fileno()) > 0:
