@@ -46,7 +46,6 @@ class ServerThread(threading.Thread):
                     b = False
 
     def authenticate(self):
-        self.client.recv(1024)
         self.client.send(b'Enter username:')
         data = self.client.recv(1024)
         self.ircuser.setUsername(str(data, 'utf-8').strip())
@@ -61,13 +60,7 @@ class ServerThread(threading.Thread):
             self.client.send(b'User authentication failed!')
 
     def joinChannel(self):
-        self.client.recv(1024)
-        self.client.send(b'Enter channel to join: ')
-        data = self.client.recv(1024)
-        self.ircuser.joinChannel(str(data, 'utf-8').strip())
+        self.ircuser.joinChannel('#global')
         self.joinedChannel = self.ircuser.joinedChannel()
-        if self.joinedChannel:
-            resp = 'Joined channel ' + self.ircuser.getChannel()
-            self.client.send(bytes(resp, 'utf-8'))
-        else:
-            self.client.send(b'Failed to join channel!')
+        resp = 'Joined channel ' + self.ircuser.getChannel()
+        self.client.send(bytes(resp, 'utf-8'))

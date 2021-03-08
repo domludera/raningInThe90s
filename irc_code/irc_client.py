@@ -38,6 +38,9 @@ class IRCClient(patterns.Subscriber):
     def set_view(self, view):
         self.view = view
 
+    def set_username(self, username):
+        self.username = username
+
     def update(self, msg):
         # TODO Will need to modify this
         if not isinstance(msg, str):

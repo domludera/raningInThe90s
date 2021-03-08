@@ -20,12 +20,16 @@ class SocketClient(threading.Thread, patterns.Publisher):
         self.inputs = [self.s]
         self.outputs = []
         self.irc = None
+        self.username = ''
 
     def set_irc(self, irc):
         self.irc = irc
 
+    def set_irc_username(self, username):
+        self.irc.username = username
+
     def update(self, msg):
-        self.irc.update(msg)
+        self.irc.view.add_msg(self.username, msg)
 
     def handleRead(self, read):
         for s in read:
@@ -34,7 +38,8 @@ class SocketClient(threading.Thread, patterns.Publisher):
                 if data:
                     if self.irc:
                         self.update(str(data, 'utf-8'))
-                    self.outputs.append(s)
+                    if s not in self.outputs:
+                        self.outputs.append(s)
             except socket.error as e:
                 if e.errno == errno.ECONNRESET:
                     data = None
@@ -45,11 +50,14 @@ class SocketClient(threading.Thread, patterns.Publisher):
         for s in write:
             if self.msg:
                 self.s.send(self.msg)
+                if self.irc:
+                    if not self.irc.username:
+                        self.username = str(self.msg, 'utf-8')
+                        self.set_irc_username(self.username)
                 self.outputs.remove(s)
         self.msg = b''
 
     def run(self):
-        self.s.send(b'\n')
         while 1:
             read, write, err = self.getReadySockets()
             self.handleRead(read)
