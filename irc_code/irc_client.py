@@ -17,6 +17,9 @@ import logging
 import patterns
 import view
 
+from themesong import ThemeSong
+from threading import Thread
+
 import sys, getopt
 
 from socket_client import SocketClient
@@ -49,9 +52,6 @@ class IRCClient(patterns.Subscriber):
             # Empty string
             return
         logger.info(f"IRCClient.update -> msg: {msg}")
-        # if self.toPrint:
-        #     self.add_msg(self.toPrint)
-        #     self.toPrint = ''
         self.process_input(msg)
 
     def process_input(self, msg):
@@ -79,12 +79,12 @@ class IRCClient(patterns.Subscriber):
 
 
 def get_help_menu():
-    menu = """usage: irc_client.py [-h] [--server SERVER] [--port PORT]
+    menu = """usage: irc_client.py [-h] [--server '<SERVER>' --port '<PORT>']
 
 optional arguments:
     -h, --help         Show this help message and exit
-    --server SERVER    Target server to initiate a connection to
-    --port PORT        Target port to use
+    --server '<SERVER>'    Target server to initiate a connection to
+    --port <PORT>        Target port to use
         """
     return menu
 
@@ -119,6 +119,9 @@ def main(args):
         v.add_subscriber(client)
         logger.debug(f"IRC Client is subscribed to the View (to receive user input)")
 
+        music_thread = ThemeSong()
+        music_thread.start()
+
         async def inner_run():
             await asyncio.gather(
                 v.run(),
@@ -128,6 +131,8 @@ def main(args):
         try:
             asyncio.run(inner_run())
         except KeyboardInterrupt as e:
+            music_thread.stop()
+            music_thread.join()
             logger.debug(f"Signifies end of process")
     client.close()
 

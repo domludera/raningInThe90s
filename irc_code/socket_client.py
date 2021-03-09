@@ -42,9 +42,11 @@ class SocketClient(threading.Thread, patterns.Publisher):
                         msg = str(data, 'utf-8')
                         m = re_user.match(msg)
                         if m:
-                            self.irc.username = m.group(1)
-                            msg = m.group(2)
-                        self.update(msg)
+                            if not m.group(1) == self.username:
+                                self.irc.username = m.group(1)
+                                msg = m.group(2)
+                                self.update(msg)
+                            self.irc.username = self.username
                     if s not in self.outputs:
                         self.outputs.append(s)
             except socket.error as e:
@@ -56,10 +58,12 @@ class SocketClient(threading.Thread, patterns.Publisher):
     def handleWrite(self, write):
         for s in write:
             if self.msg:
+                re_nick = re.compile('(NICK)\W(\S+)')
+                m_nick = re_nick.match(str(self.msg, 'utf-8'))
+                if m_nick:
+                    self.username = m_nick.group(2)
+                    self.set_irc_username(self.username)
                 self.s.send(self.msg)
-                    # if not self.irc.username:
-                    #     self.username = str(self.msg, 'utf-8')
-                    #     self.set_irc_username(self.username)
                 self.outputs.remove(s)
         self.msg = b''
 

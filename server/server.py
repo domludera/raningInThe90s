@@ -53,8 +53,11 @@ class Server(object):
             if s == self.server:
                 sock, address = self.server.accept();
                 server_thread = ServerThread()
-                server_thread.setup(sock, address, self)
-                server_thread.start()
+                server_thread.setup(sock, address, self, self.logger)
+                try:
+                    server_thread.start()
+                except KeyboardInterrupt:
+                    server_thread.join()
                 self.clients[server_thread.client] = server_thread
                 self.outputs.append(server_thread.client)
             else:
@@ -71,8 +74,10 @@ class Server(object):
                             self.outputs.append(s)
                     else:
                         loud_mouth = self.clients[s].ircuser.getNickname()
-                        self.logger.debug('%s has disconnected', loud_mouth)
+                        if loud_mouth:
+                            self.logger.debug('%s %s has disconnected', s, loud_mouth)
                         self.inputs.remove(s)
+                        self.outputs.remove(s)
                         del self.clients[s]
                         s.close()
                 except socket.error as e:
@@ -84,23 +89,21 @@ class Server(object):
     def handle_writer(self, outready):
         for s in outready:
             if s.fileno() > 0:
-                try:
-                    if self.clients[s].joinedChannel:
-                        if self.data:
-                            self.send_resp(s)
-                        if s not in self.inputs:
-                            self.inputs.append(s)
-                except socket.error as e:
-                    print('socket out break')
+                if self.clients[s].joinedChannel:
+                    if self.data:
+                        self.send_resp(s)
+                    if s not in self.inputs:
+                        self.inputs.append(s)
             else:
-                self.outputs.remove(s)
+                if s in self.outputs:
+                    self.outputs.remove(s)
         self.data = b''
 
     def handle_err(self, excready):
         for err in excready:
             self.inputs.remove(err)
             self.outputs.remove(err)
-            del self.clients[err]
+            # del self.clients[err]
             err.close()
 
     def run(self):
@@ -119,6 +122,7 @@ class Server(object):
         sender = self.clients[self.sender].ircuser.getNickname()
         msg = sender + '~' + str(self.data, 'utf-8')
         s.sendall(bytes(msg, 'utf-8'))
+
 
 if __name__ == '__main__':
     server = Server()
