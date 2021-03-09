@@ -3,3 +3,5 @@ chat/
 .vim/
 server/__pycache__
 debug.log
+
+irc_code/__pycache__/

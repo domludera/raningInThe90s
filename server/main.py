@@ -2,5 +2,8 @@
 from server import Server
 
 server = Server()
-server.run()
+try:
+    server.run()
+except KeyboardInterrupt:
+    print('DISCONNECTED SERVER')
 

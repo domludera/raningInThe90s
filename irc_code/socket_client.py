@@ -6,6 +6,7 @@ import time
 import asyncio
 import threading
 import patterns
+import re
 
 
 class SocketClient(threading.Thread, patterns.Publisher):
@@ -30,7 +31,7 @@ class SocketClient(threading.Thread, patterns.Publisher):
         self.irc.username = username
 
     def update(self, msg):
-        self.irc.view.add_msg(self.username, msg)
+        self.irc.add_msg(msg)
 
     def handleRead(self, read):
         for s in read:
@@ -38,7 +39,15 @@ class SocketClient(threading.Thread, patterns.Publisher):
                 data = self.s.recv(1024)
                 if data:
                     if self.irc:
-                        self.update(str(data, 'utf-8'))
+                        re_user = re.compile('(\S+)~([\S+\s?].*)')
+                        msg = str(data, 'utf-8')
+                        m = re_user.match(msg)
+                        if m:
+                            if not m.group(1) == self.username:
+                                self.irc.username = m.group(1)
+                                msg = m.group(2)
+                                self.update(msg)
+                            self.irc.username = self.username
                     if s not in self.outputs:
                         self.outputs.append(s)
             except socket.error as e:
@@ -50,21 +59,22 @@ class SocketClient(threading.Thread, patterns.Publisher):
     def handleWrite(self, write):
         for s in write:
             if self.msg:
+                re_nick = re.compile('(NICK)\W(\S+)')
+                m_nick = re_nick.match(str(self.msg, 'utf-8'))
+                if m_nick:
+                    self.username = m_nick.group(2)
+                    self.set_irc_username(self.username)
                 self.s.send(self.msg)
-                if self.irc:
-                    if not self.irc.username:
-                        self.username = str(self.msg, 'utf-8').split(' ')[1]
-                        self.set_irc_username(self.username)
                 self.outputs.remove(s)
         self.msg = b''
 
     def run(self):
         while 1:
-            read, write, err = self.getReadySockets()
+            read, write, err = self.get_ready_sockets()
             self.handleRead(read)
             self.handleWrite(write)
 
-    def getReadySockets(self):
+    def get_ready_sockets(self):
         return select.select(self.inputs, self.outputs, self.inputs)
 
     def setMsg(self, msg):
