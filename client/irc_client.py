@@ -84,6 +84,12 @@ optional arguments:
     --server '<SERVER>'     Target server to initiate a connection to
     --port <PORT>           Target port to use
     -m                      Enable music
+    
+using IRC commands, after launching the client use:
+  USER <username> to initialize your username
+  NICK <nickname> to set your nickname
+after that you will automatically join the #global channel
+and you can start chatting!
         """
     return menu
 

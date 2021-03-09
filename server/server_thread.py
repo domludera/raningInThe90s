@@ -38,8 +38,7 @@ class ServerThread(threading.Thread):
         b = True
         re_user = re.compile('(USER)\W(\S+)')
         re_nick = re.compile('(NICK)\W(\S+)')
-        self.send_resp('STANDARD IRC CONFIG COMMANDS, please set your username and nickname using USER and '
-                              'NICK command\n USER <username>\n NICK <nickname>')
+        self.send_resp('Using IRC commands, please set your username and nickname\n USER <username>\n NICK <nickname>')
 
         try:
             while not self.authenticated:
