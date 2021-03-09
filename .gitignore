@@ -3,5 +3,8 @@ chat/
 .vim/
 server/__pycache__
 debug.log
+.idea/
 
-irc_code/__pycache__/
+client/__pycache__/
+
+*.log

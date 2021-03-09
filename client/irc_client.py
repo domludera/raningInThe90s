@@ -11,14 +11,12 @@ Description:
 
 """
 import asyncio
-import concurrent
 import logging
 
 import patterns
 import view
 
 from themesong import ThemeSong
-from threading import Thread
 
 import sys, getopt
 
@@ -30,13 +28,13 @@ logger = logging.getLogger()
 
 class IRCClient(patterns.Subscriber):
 
-    def __init__(self, HOST, PORT):
+    def __init__(self, HOST, PORT, music):
         super().__init__()
         self.username = str()
         self._run = True
         self._s = SocketClient(HOST, PORT)
         self._s.set_irc(self)
-        # self.toPrint = ''
+        self.music = music
 
     def set_view(self, view):
         self.view = view
@@ -79,12 +77,13 @@ class IRCClient(patterns.Subscriber):
 
 
 def get_help_menu():
-    menu = """usage: irc_client.py [-h] [--server '<SERVER>' --port '<PORT>']
+    menu = """usage: irc_client.py [-h] [--server '<SERVER>' --port '<PORT>'] [-m]
 
 optional arguments:
-    -h, --help         Show this help message and exit
-    --server '<SERVER>'    Target server to initiate a connection to
-    --port <PORT>        Target port to use
+    -h, --help              Show this help message and exit
+    --server '<SERVER>'     Target server to initiate a connection to
+    --port <PORT>           Target port to use
+    -m                      Enable music
         """
     return menu
 
@@ -92,20 +91,28 @@ optional arguments:
 def init_client(cmdargs):
     HOST = ''
     PORT = 0
+    music = False
     try:
-        opts, arguments = getopt.getopt(cmdargs, "hs:p:", ["help", "server=", "port="])
+        opts, arguments = getopt.getopt(cmdargs, "hms:p:", ["help", "server=", "port="])
     except getopt.GetoptError:
         print(get_help_menu())
         sys.exit(2)
     for opt, arg in opts:
-        if opt == '-h' or opt == '--help':
+        if opt != '-h' or opt != '--help':
+            if opt == '--server':
+                HOST = arg
+            if opt == '--port':
+                PORT = arg
+            if opt == '-m':
+                music = True
+        else:
             print(get_help_menu())
             sys.exit()
-        if opt == '--server':
-            HOST = arg
-        if opt == '--port':
-            PORT = arg
-    return IRCClient(HOST, int(PORT))
+    if len(opts) < 1:
+        print(get_help_menu())
+        sys.exit()
+
+    return IRCClient(HOST, int(PORT), music)
 
 
 def main(args):
@@ -119,8 +126,9 @@ def main(args):
         v.add_subscriber(client)
         logger.debug(f"IRC Client is subscribed to the View (to receive user input)")
 
-        music_thread = ThemeSong()
-        music_thread.start()
+        if client.music:
+            music_thread = ThemeSong()
+            music_thread.start()
 
         async def inner_run():
             await asyncio.gather(

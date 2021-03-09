@@ -1,9 +1,10 @@
+#!/bin/python3.8
+import sys
+import getopt
 import errno
 import select
 import socket
 import logging
-
-
 
 from server_thread import ServerThread
 
@@ -12,16 +13,16 @@ class Server(object):
     Threading server
     '''
 
-    def __init__(self):
+    def __init__(self, HOST, PORT):
         '''
         Constructor
         '''
-        SERVER = 'localhost'
-        PORT = 50012
+        self.HOST = HOST
+        self.PORT = PORT
 
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.server.bind((SERVER, PORT))
+        self.server.bind((self.HOST, self.PORT))
         self.sender = None
 
         self.inputs = [self.server]
@@ -46,7 +47,7 @@ class Server(object):
         self.logger.addHandler(self.handler)
         self.logger.setLevel(logging.DEBUG)
 
-        self.logger.debug('Logger initialized for server "%s" at port %s', SERVER, PORT)
+        self.logger.debug('Logger initialized for server "%s" at port %s', self.HOST, self.PORT)
 
     def handler_reader(self, inready):
         for s in inready:
@@ -110,7 +111,7 @@ class Server(object):
     def run(self):
         self.logger.debug('Server running, listening for inbound connections')
         self.server.listen()
-        
+
         while True:
 
             inready, outready, excready = select.select(self.inputs, self.outputs, self.inputs)
@@ -125,6 +126,50 @@ class Server(object):
         s.sendall(bytes(msg, 'utf-8'))
 
 
+def get_help_menu():
+    menu = """usage: irc_server.py [-h] [--server '<SERVER>' --port '<PORT>']
+
+optional arguments:
+    -h, --help              Show this help message and exit
+    --server '<SERVER>'     Target server to bind to
+    --port <PORT>           Target port to use
+        """
+    return menu
+
+
+def init_server(cmdargs):
+    HOST = ''
+    PORT = 0
+    music = False
+    try:
+        opts, arguments = getopt.getopt(cmdargs, "hms:p:", ["help", "server=", "port="])
+    except getopt.GetoptError:
+        print(get_help_menu())
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt != '-h' or opt != '--help':
+            if opt == '--server':
+                HOST = arg
+            if opt == '--port':
+                PORT = arg
+        else:
+            print(get_help_menu())
+            sys.exit()
+    if len(opts) < 1:
+        print(get_help_menu())
+        sys.exit()
+
+    return Server(HOST, int(PORT))
+
+
+def main(args):
+    server = init_server(args)
+    try:
+        server.run()
+    except KeyboardInterrupt:
+        print('DISCONNECTED SERVER')
+
+
 if __name__ == '__main__':
-    server = Server()
-    server.run()
+    args = None
+    main(sys.argv[1:])

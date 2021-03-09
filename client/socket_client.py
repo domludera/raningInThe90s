@@ -1,9 +1,6 @@
 import socket
 import select
 import errno
-import sys
-import time
-import asyncio
 import threading
 import patterns
 import re

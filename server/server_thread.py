@@ -7,7 +7,7 @@ import errno
 
 import re
 
-from irc_user import IRCUser
+from user import IRCUser
 
 
 class ServerThread(threading.Thread):
